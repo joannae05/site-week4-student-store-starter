@@ -10,8 +10,8 @@ router.post("/", controller.create);
 router.put("/:id", controller.update);
 router.delete("/:id", controller.remove);
 
-router.get("/items", controllerItems.getAll);
+// router.get("/items", controllerItems.getAll);
 router.post("/:id/items", controllerItems.create);
-router.get("/:id/total", controllerItems.getOrderTotal);
+// router.get("/:id/total", controllerItems.getOrderTotal);
 
 module.exports = router;

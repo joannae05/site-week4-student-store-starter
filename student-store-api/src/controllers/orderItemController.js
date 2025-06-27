@@ -5,7 +5,7 @@ const prisma = require("../db/db");
 // USING GET
 // route for getting all products
 exports.getAll = async (req, res) => {
-  const items = await prisma.orderItems.findMany();
+  const items = await prisma.orderItem.findMany();
   res.json(items);
 };
 

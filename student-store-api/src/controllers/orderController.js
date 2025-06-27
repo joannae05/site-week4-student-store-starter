@@ -53,6 +53,9 @@ exports.create = async (req, res) => {
         })),
       },
     },
+    include: {
+      items: true,
+    },
   });
   if (newOrder) {
     res.status(201).json(newOrder);
@@ -67,19 +70,21 @@ exports.update = async (req, res) => {
   const { customer_id, total_price, status, items } = req.body;
   try {
     const updatedOrder = await prisma.order.update({
-      where: { order_id: order_id },
+      where: { order_id },
       data: {
         // prisma automatically ignores any fields not given to update, so dont worry
         customer_id,
         total_price,
         status,
-        items: {
-          create: items.map((item) => ({
-            product_id: item.product_id,
-            quantity: item.quantity,
-            price: item.price,
-          })),
-        },
+        ...(items && {
+          items: {
+            create: items.map((item) => ({
+              product_id: item.product_id,
+              quantity: item.quantity,
+              price: item.price,
+            })),
+          },
+        }),
       },
     });
     res.status(200).json(updatedOrder);
