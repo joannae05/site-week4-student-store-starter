@@ -16,7 +16,7 @@ function ProductDetail({ addToCart, removeFromCart, getQuantityOfItemInCart }) {
       setIsFetching(true);
       try {
         const response = await axios.get(
-          `http://localhost:3000/product/${productId}`
+          `http://localhost:3000/products/${productId}`
         );
         setProduct(response.data);
         setError(null);

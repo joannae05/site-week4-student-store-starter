@@ -33,7 +33,7 @@ function App() {
     const fetchProducts = async () => {
       setIsFetching(true);
       try {
-        const response = await axios.get("http://localhost:3000/product");
+        const response = await axios.get("http://localhost:3000/products");
         setProducts(response.data);
         setError(null);
       } catch (err) {
@@ -88,7 +88,7 @@ function App() {
         items,
       };
 
-      const response = await axios.post("http://localhost:3000/order", order);
+      const response = await axios.post("http://localhost:3000/orders", order);
       setOrder(response.data);
       setCart({});
       setUserInfo({ name: "", dorm_number: "" });

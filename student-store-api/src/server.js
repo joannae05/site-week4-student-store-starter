@@ -13,8 +13,8 @@ const corsOption = {
 // Middleware, using what is needed
 app.use(express.json());
 app.use(cors(corsOption));
-app.use("/product", productRoutes);
-app.use("/order", orderRoutes);
+app.use("/products", productRoutes);
+app.use("/orders", orderRoutes);
 
 // route for the root path,. the default "/"
 app.get("/", (req, res) => {
